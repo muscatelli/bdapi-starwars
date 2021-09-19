@@ -68,3 +68,25 @@ class Character(db.Model):
     'eye_color': self.eye_color        
         }
 
+class Planets(db.Model):
+    id= db.Column(db.Integer, primary_key=True)
+    name= db.Column(db.String(30), nullable=True)
+    population= db.Column(db.String(30), nullable=True)
+    terrain= db.Column(db.String(30), nullable=True)
+    climate= db.Column(db.String(30), nullable=True)
+    rotate_period= db.Column(db.Integer, nullable=True)
+    orbital_period= db.Column(db.Integer, nullable=True)
+
+    def __repr__(self):
+        return "<planets %r>" % self.id
+
+    def serialize(self):
+        return{
+        'id': self.id,
+        'name': self.name,
+        'population': self.population,
+        'terrain': self.terrain,
+        'climate': self.climate,
+        'rotate_period': self.sel.rotate_period,
+        'orbital_period': self.orbital_period
+        }

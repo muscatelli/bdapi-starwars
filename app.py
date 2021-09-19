@@ -1,7 +1,7 @@
 import os 
 from flask import Flask, jsonify, request
 from flask_sqlalchemy import SQLAlchemy
-from models import db, User, Vehicles, Character
+from models import db, User, Vehicles, Character, Planets
 from flask_migrate import Migrate
 #from flask_script import Manager
 BASEDIR = os.path.abspath(os.path.dirname(__file__))
@@ -60,6 +60,15 @@ def Character():
     db.session.commit()
 
     return jsonify(user.serialize()), 200
+
+def Planets():
+    planets = Planets()
+    planets.name = request.json.get('name')
+    planets.population = request.json.get('population')
+    planets.terrain = request.json.get('terrain')
+    planets.climate = request.json.get('climate')
+    planets.rotate_period = request.json.get('rotate_period')
+    planets.orbital_period = request.json.get('orbital_period')
 
 if __name__ == "__main__":
     app.run(host='localhost',port=8080)
