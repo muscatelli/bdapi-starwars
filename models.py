@@ -48,3 +48,23 @@ class Vehicles(db.Model):
     'manufacturer': self.manufacturer,
     'cost_in_credits': self.cost_in_credits
         }
+
+class Character(db.Model):
+    id= db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(30), nullable=False)
+    gender = db.Column(db.String(30), nullable=False)
+    hair_color = db.Column(db.String(30), nullable=False)
+    eye_color = db.Column(db.String(30), nullable=False)
+
+    def __repr__(self):
+        return "<character %r>" % self.id
+    
+    def serialize(self):
+        return{
+    'id': self.id,
+    'name': self.name,
+    'gender': self.gender,
+    'hair_color': self.hair_color,
+    'eye_color': self.eye_color        
+        }
+

@@ -1,7 +1,7 @@
 import os 
 from flask import Flask, jsonify, request
 from flask_sqlalchemy import SQLAlchemy
-from models import db, User, Vehicles
+from models import db, User, Vehicles, Character
 from flask_migrate import Migrate
 #from flask_script import Manager
 BASEDIR = os.path.abspath(os.path.dirname(__file__))
@@ -49,6 +49,17 @@ def vehicles():
 
     return jsonify(user.serialize()), 200
 
+def Character():
+    character = Character()
+    Character.name = request.json.get('name')
+    Character.gender = request.json.get('gender')
+    Character.hair_color = request.json.get('hair_color')
+    Character.eye_color = request.json.get('eye_color')
+
+    db.session.add(character)
+    db.session.commit()
+
+    return jsonify(user.serialize()), 200
 
 if __name__ == "__main__":
     app.run(host='localhost',port=8080)
