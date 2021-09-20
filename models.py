@@ -2,6 +2,7 @@ from flask_sqlalchemy import SQLAlchemy
 db = SQLAlchemy()
 
 class User(db.Model):
+    __tablename__ = 'user'
     id= db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(30), nullable=False)
     password = db.Column(db.String(10), nullable=False)
@@ -26,6 +27,7 @@ class User(db.Model):
 }
 
 class Vehicles(db.Model):
+    __tablename__ = 'vehicles'
     id= db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(30), nullable=False)
     model = db.Column(db.String(10), nullable=False)
@@ -50,6 +52,7 @@ class Vehicles(db.Model):
         }
 
 class Character(db.Model):
+    __tablename__ = 'character'
     id= db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(30), nullable=False)
     gender = db.Column(db.String(30), nullable=False)
@@ -69,6 +72,7 @@ class Character(db.Model):
         }
 
 class Planets(db.Model):
+    __tablename__ = 'planets'
     id= db.Column(db.Integer, primary_key=True)
     name= db.Column(db.String(30), nullable=True)
     population= db.Column(db.String(30), nullable=True)
