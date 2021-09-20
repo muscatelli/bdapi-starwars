@@ -90,3 +90,22 @@ class Planets(db.Model):
         'rotate_period': self.sel.rotate_period,
         'orbital_period': self.orbital_period
         }
+
+#class Favorites(db.Model):
+ #   __tablename__ = 'favorites'
+ #   id_user = db.Column(db.Integer, nullable= False, primary_key=True)
+ #   id_fav = db.Column(db.Integer)
+ #   fav_name = db.Column(db.String(250))
+ #   fav_Section = db.Column(db.String(250))
+
+
+ #   def __repr__(self):
+ #       return "<Favorite %r>" % self.id
+
+    def serialize(self):
+        return{
+            'id_user': self.id_user,
+            'id_fav': self.id_fav,
+            'fav_name': self.fav_name,
+            'fav_section': self.fav_Section
+        }

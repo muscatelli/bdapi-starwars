@@ -1,7 +1,7 @@
 import os 
 from flask import Flask, jsonify, request
 from flask_sqlalchemy import SQLAlchemy
-from models import db, User, Vehicles, Character, Planets
+from models import db, User, Vehicles, Character, Planets #Favorites
 from flask_migrate import Migrate
 #from flask_script import Manager
 BASEDIR = os.path.abspath(os.path.dirname(__file__))
@@ -47,7 +47,9 @@ def vehicles():
     db.session.add(vehicles)
     db.session.commit()
 
-    return jsonify(user.serialize()), 200
+    return jsonify(vehicles.serialize()), 200
+
+@app.route("/character",methods=["GET"])
 
 def Character():
     character = Character()
@@ -59,7 +61,9 @@ def Character():
     db.session.add(character)
     db.session.commit()
 
-    return jsonify(user.serialize()), 200
+    return jsonify(Character.serialize()), 200
+
+@app.route("/planets",methods=["GET"])
 
 def Planets():
     planets = Planets()
@@ -69,6 +73,17 @@ def Planets():
     planets.climate = request.json.get('climate')
     planets.rotate_period = request.json.get('rotate_period')
     planets.orbital_period = request.json.get('orbital_period')
+
+    db.session.add(Planets)
+    db.session.commit()
+
+    return jsonify(Plantes,serialize()), 200
+
+#def Favorites():
+ #   favorites = Favorites
+
+
+
 
 if __name__ == "__main__":
     app.run(host='localhost',port=8080)
