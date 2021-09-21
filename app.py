@@ -60,31 +60,33 @@ def vehicles():
 
     return jsonify(vehicles.serialize()), 200
 
-@app.route("/character",methods=["GET", "POST"])
-
-def Character():
+@app.route("/character", methods=["POST", "GET"])
+def character():    
     if request.method == "GET":
         character = Character.query.get(1)
         if character is not None:
-            return jsonify(character.serialize())
+            return jsonify(character.serialize())   
     else:
+    
         character = Character()
-        Character.name = request.json.get('name')
-        Character.gender = request.json.get('gender')
-        Character.hair_color = request.json.get('hair_color')
-        Character.eye_color = request.json.get('eye_color')
-
+        character.name = request.json.get("name")
+        character.gender = request.json.get("gender")
+        character.hair_color = request.json.get("hair_color")
+        character.skin_color = request.json.get("skin_color")
+       
+        
+        
         db.session.add(character)
         db.session.commit()
-
-    return jsonify(Character.serialize()), 200
+    
+        return jsonify(character.serialize()), 200
 
 @app.route("/planets", methods=["POST", "GET"])
 def Planets(): 
     if request.method == "GET":
         planets = Planets.query.get(1)
         if planets is not None:
-            return jsonify(planets.serialize_just_planetname())   
+            return jsonify(planets.serialize())   
     else:
         planets = Planets()
         planets.name = request.json.get("name")
@@ -97,7 +99,7 @@ def Planets():
         db.session.add(planets)
         db.session.commit()
 
-    return jsonify(Plantes,serialize()), 200
+    return jsonify(plantes,serialize()), 200
 
 
 

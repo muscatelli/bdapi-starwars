@@ -58,7 +58,7 @@ class Character(db.Model):
     name = db.Column(db.String(30))
     gender = db.Column(db.String(30))
     hair_color = db.Column(db.String(30))
-    eye_color = db.Column(db.String(30))
+    skin_color = db.Column(db.String(30))
 
     def __repr__(self):
         return "<character %r>" % self.id
@@ -69,7 +69,7 @@ class Character(db.Model):
     'name': self.name,
     'gender': self.gender,
     'hair_color': self.hair_color,
-    'eye_color': self.eye_color        
+    'skin_color': self.skin_color        
         }
 
 class Planets(db.Model):
