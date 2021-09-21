@@ -55,10 +55,10 @@ class Vehicles(db.Model):
 class Character(db.Model):
     __tablename__ = 'character'
     id= db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(30), nullable=False)
-    gender = db.Column(db.String(30), nullable=False)
-    hair_color = db.Column(db.String(30), nullable=False)
-    eye_color = db.Column(db.String(30), nullable=False)
+    name = db.Column(db.String(30))
+    gender = db.Column(db.String(30))
+    hair_color = db.Column(db.String(30))
+    eye_color = db.Column(db.String(30))
 
     def __repr__(self):
         return "<character %r>" % self.id
@@ -75,12 +75,12 @@ class Character(db.Model):
 class Planets(db.Model):
     __tablename__ = 'planets'
     id= db.Column(db.Integer, primary_key=True)
-    name= db.Column(db.String(30), nullable=True)
-    population= db.Column(db.String(30), nullable=True)
-    terrain= db.Column(db.String(30), nullable=True)
-    climate= db.Column(db.String(30), nullable=True)
-    rotate_period= db.Column(db.Integer, nullable=True)
-    orbital_period= db.Column(db.Integer, nullable=True)
+    name= db.Column(db.String(30))
+    population= db.Column(db.String(30))
+    terrain= db.Column(db.String(30))
+    climate= db.Column(db.String(30))
+    rotate_period= db.Column(db.Integer)
+    orbital_period= db.Column(db.Integer)
 
     def __repr__(self):
         return "<planets %r>" % self.id

@@ -66,7 +66,7 @@ def Character():
     if request.method == "GET":
         character = Character.query.get(1)
         if character is not None:
-            return jsonify(planets.serialize_just_charactername())
+            return jsonify(character.serialize())
     else:
         character = Character()
         Character.name = request.json.get('name')
@@ -98,10 +98,6 @@ def Planets():
         db.session.commit()
 
     return jsonify(Plantes,serialize()), 200
-
-#def Favorites():
- #   favorites = Favorites
-
 
 
 
