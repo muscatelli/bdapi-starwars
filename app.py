@@ -24,7 +24,7 @@ def user():
     if request.method == "GET":
         user = User.query.get(1)
         if user is not None:
-            return jsonify(user.serialize_just_username())
+            return jsonify(user.serialize())
     else:
         user = User()
         user.name = request.json.get("name")
