@@ -14,10 +14,11 @@ class User(db.Model):
 
     def serialize(self):
         return{
-    'id': self.id,
-    'name': self.name,
-    'password': self.password,
-    'isActive': self.isActive
+     'name': self.name,
+     'password': self.password,
+     'email': self.email,
+     'isActive': self.isActive
+    
 }
 
     def serialize_just_username(self):
@@ -29,12 +30,12 @@ class User(db.Model):
 class Vehicles(db.Model):
     __tablename__ = 'vehicles'
     id= db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(30), nullable=False)
-    model = db.Column(db.String(10), nullable=False)
-    vehicle_class=db.Column(db.String(30), nullable=False)
-    crews=db.Column(db.String(30), nullable=False)
-    manufacturer=db.Column(db.String(30), nullable=False)
-    cost_in_credits=db.Column(db.String(30), nullable=False)
+    name = db.Column(db.String(30), nullable= False)
+    model = db.Column(db.String(10))
+    vehicle_class=db.Column(db.String(30))
+    crews =db.Column(db.String(30))
+    manufacturer=db.Column(db.String(30))
+    cost_in_credits=db.Column(db.String(30))
     
 
     def __repr__(self):
@@ -45,8 +46,8 @@ class Vehicles(db.Model):
     'id': self.id,
     'name': self.name,
     'model': self.model,
-    'vechicle_class': self.vechicle_class,
-    'crew': self.crew,
+    'vehicle_class': self.vehicle_class,
+    'crews': self.crews,
     'manufacturer': self.manufacturer,
     'cost_in_credits': self.cost_in_credits
         }

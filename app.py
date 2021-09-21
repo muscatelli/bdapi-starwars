@@ -19,7 +19,7 @@ db.init_app(app)
 def test(): 
     return jsonify('hola mundo')
 
-@app.route("/test",methods=["POST","GET"])
+@app.route("/user",methods=["POST","GET"])
 def user():
     if request.method == "GET":
         user = User.query.get(1)
@@ -44,14 +44,14 @@ def user():
 def vehicles():
     if request.method == "GET":
         vehicles = Vehicles.query.get(1)
-        if character is not None:
-            return jsonify(planets.serialize_just_vechiclesname())
+        if vehicles is not None:
+            return jsonify(vehicles.serialize())
     else:
         vehicles = Vehicles()
         vehicles.name = request.json.get('name')
         vehicles.model = request.json.get('model')
-        vehicles_class = request.json.get('vehicles_class')
-        vehicles.crew = request.json.get('crew')
+        vehicles.vehicle_class = request.json.get('vehicle_class')
+        vehicles.crews = request.json.get('crews')
         vehicles.manufacturer = request.json.get('manufacturer')
         vehicles.cost_in_credits = request.json.get('cost_in_credits')     
     
