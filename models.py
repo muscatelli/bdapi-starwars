@@ -96,21 +96,24 @@ class Planets(db.Model):
             'population':self.population,
         }
 
-#class Favorites(db.Model):
- #   __tablename__ = 'favorites'
- #   id_user = db.Column(db.Integer, nullable= False, primary_key=True)
- #   id_fav = db.Column(db.Integer)
- #   fav_name = db.Column(db.String(250))
- #   fav_Section = db.Column(db.String(250))
+#class Favorite(db.Model):
+#    __tablename__ = 'favorites'
+#    id= db.Column(db.Integer, primary_key=True)
+#    id_user = db.Column(db.Integer, db.ForeignKey('user.id'))
+#    fav_planet = db.Column(db.Integer, db.ForeignKey('planets.planet.id'))
+#.   fav_character = db.Column(db.Integer, db.ForeignKey('character.character.character.id'))
+#.   fav_vehicles= db.Column(db.Integer, db.ForeignKey('vehicles.vehicles.id'))
 
 
- #   def __repr__(self):
- #       return "<Favorite %r>" % self.id
+#   def __repr__(self):
+#       return "<Favorite %r>" % self.id
 
-   # def serialize(self):
-    #    return{
+#    def serialize(self):
+#         return{
      #       'id_user': self.id_user,
       #      'id_fav': self.id_fav,
-       #     'fav_name': self.fav_name,
-        #    'fav_section': self.fav_Section
+       #     'fav_planet': self.fav_name,
+        #    'fav_character': self.fav_Section,
+        #    'fav_vehicles': self.fav_vehicles
         #}
+

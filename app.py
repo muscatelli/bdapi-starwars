@@ -100,6 +100,23 @@ def planets():
     return jsonify(planets.serialize()), 200
 
 
+#@app.route("/favorites", methods=["POST", "GET"])
+#def favorites():
+#    if request.method == "GET":
+#        favorites = Favorite.query.get(1)
+#        if favorites is not None:
+#            return jsonify(favorites.serialize_just_user_fav())
+#    else:
+#        favorites = Favorite()
+ #favorites.fav_name = request.json.get("fav_name")
+       
+
+#        db.session.add(favorites)
+#        db.session.commit()
+
+#    return jsonify(favorites.serialize())
+
+
 if __name__ == "__main__":
     app.run(host='localhost',port=8080)
 
