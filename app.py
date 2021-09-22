@@ -63,9 +63,10 @@ def vehicles():
 @app.route("/character", methods=["POST", "GET"])
 def character():    
     if request.method == "GET":
-        character = Character.query.get(1)
+        character = Character.query.all()
+        character = list(map(lambda character: character.serialize(), character))
         if character is not None:
-            return jsonify(character.serialize())   
+            return jsonify(character)   
     else:
     
         character = Character()
