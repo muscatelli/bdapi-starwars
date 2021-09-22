@@ -74,26 +74,26 @@ class Character(db.Model):
 
 class Planets(db.Model):
     __tablename__ = 'planets'
-    id= db.Column(db.Integer, primary_key=True)
-    name= db.Column(db.String(30))
-    population= db.Column(db.String(30))
-    terrain= db.Column(db.String(30))
-    climate= db.Column(db.String(30))
-    rotate_period= db.Column(db.Integer)
-    orbital_period= db.Column(db.Integer)
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(10), nullable=False)
+    rotation_period = db.Column(db.String(10))
+    climate = db.Column(db.String(30), nullable=False)
+    terrain = db.Column(db.String(30), default=False)
+    population = db.Column(db.String(30), default=False)
+    
+    
 
     def __repr__(self):
-        return "<planets %r>" % self.id
-
+        return "<Planets %r>" % self.id
+    
     def serialize(self):
-        return{
-        'id': self.id,
-        'name': self.name,
-        'population': self.population,
-        'terrain': self.terrain,
-        'climate': self.climate,
-        'rotate_period': self.sel.rotate_period,
-        'orbital_period': self.orbital_period
+        return {
+            'id': self.id,
+            'name':self.name,
+            'rotation_period':self.rotation_period,
+            'climate':self.climate,
+            'terrain':self.terrain,
+            'population':self.population,
         }
 
 #class Favorites(db.Model):
@@ -107,10 +107,10 @@ class Planets(db.Model):
  #   def __repr__(self):
  #       return "<Favorite %r>" % self.id
 
-    def serialize(self):
-        return{
-            'id_user': self.id_user,
-            'id_fav': self.id_fav,
-            'fav_name': self.fav_name,
-            'fav_section': self.fav_Section
-        }
+   # def serialize(self):
+    #    return{
+     #       'id_user': self.id_user,
+      #      'id_fav': self.id_fav,
+       #     'fav_name': self.fav_name,
+        #    'fav_section': self.fav_Section
+        #}

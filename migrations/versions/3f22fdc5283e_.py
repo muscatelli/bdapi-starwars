@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 610439d9ddcc
+Revision ID: 3f22fdc5283e
 Revises: 
-Create Date: 2021-09-21 23:48:16.546720
+Create Date: 2021-09-22 00:27:31.093318
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '610439d9ddcc'
+revision = '3f22fdc5283e'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -28,12 +28,11 @@ def upgrade():
     )
     op.create_table('planets',
     sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('name', sa.String(length=30), nullable=True),
-    sa.Column('population', sa.String(length=30), nullable=True),
+    sa.Column('name', sa.String(length=10), nullable=False),
+    sa.Column('rotation_period', sa.String(length=10), nullable=True),
+    sa.Column('climate', sa.String(length=30), nullable=False),
     sa.Column('terrain', sa.String(length=30), nullable=True),
-    sa.Column('climate', sa.String(length=30), nullable=True),
-    sa.Column('rotate_period', sa.Integer(), nullable=True),
-    sa.Column('orbital_period', sa.Integer(), nullable=True),
+    sa.Column('population', sa.String(length=30), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('user',

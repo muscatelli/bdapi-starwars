@@ -73,16 +73,14 @@ def character():
         character.gender = request.json.get("gender")
         character.hair_color = request.json.get("hair_color")
         character.skin_color = request.json.get("skin_color")
-       
-        
-        
+         
         db.session.add(character)
         db.session.commit()
     
-        return jsonify(character.serialize()), 200
+    return jsonify(character.serialize()), 200
 
 @app.route("/planets", methods=["POST", "GET"])
-def Planets(): 
+def planets(): 
     if request.method == "GET":
         planets = Planets.query.get(1)
         if planets is not None:
@@ -98,9 +96,8 @@ def Planets():
             
         db.session.add(planets)
         db.session.commit()
-
-    return jsonify(plantes,serialize()), 200
-
+    
+    return jsonify(planets.serialize()), 200
 
 
 if __name__ == "__main__":
