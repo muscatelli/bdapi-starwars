@@ -22,9 +22,10 @@ def test():
 @app.route("/user",methods=["POST","GET"])
 def user():
     if request.method == "GET":
-        user = User.query.get(1)
+        user = User.query.all()
+        user = list(map(lambda user: user.serialize(), user))
         if user is not None:
-            return jsonify(user.serialize())
+            return jsonify(user)
     else:
         user = User()
         user.name = request.json.get("name")
@@ -43,9 +44,10 @@ def user():
 
 def vehicles():
     if request.method == "GET":
-        vehicles = Vehicles.query.get(1)
+        vehicles = Vehicles.query.all()
+        vehicles = list(map(lambda vehicles: vehicles.serialize(), vehicles))
         if vehicles is not None:
-            return jsonify(vehicles.serialize())
+            return jsonify(vehicles)
     else:
         vehicles = Vehicles()
         vehicles.name = request.json.get('name')
@@ -83,9 +85,10 @@ def character():
 @app.route("/planets", methods=["POST", "GET"])
 def planets(): 
     if request.method == "GET":
-        planets = Planets.query.get(1)
+        planets = Planets.query.all()
+        planets = list(map(lambda planets: planets.serialize(), planets))
         if planets is not None:
-            return jsonify(planets.serialize())   
+            return jsonify(planets)   
     else:
         planets = Planets()
         planets.name = request.json.get("name")
