@@ -1,7 +1,7 @@
 import os 
 from flask import Flask, jsonify, request
 from flask_sqlalchemy import SQLAlchemy
-from models import db, User, Vehicles, Character, Planets #Favorites
+from models import db, User, Vehicles, Character, Planets, Favorite
 from flask_migrate import Migrate
 #from flask_script import Manager
 BASEDIR = os.path.abspath(os.path.dirname(__file__))
@@ -102,6 +102,26 @@ def planets():
         db.session.commit()
     
     return jsonify(planets.serialize()), 200
+
+@app.route("/favorites",methods=["POST","GET"])
+def favorites():
+    if request.method == "GET":
+        favorites = Favorite.query.all()
+        favorites = list(map(lambda x: x.serialize(), favorites))
+        return jsonify(favorites)
+        if favorites is not None:
+            return jsonify(favorites.serialize())   
+    else:
+        favorites = Favorite()
+        data = request.json.get("favorite_name")
+        favorites.category=request.json.get("category")
+        favorites.favorite_name=request.json.get("favorite_name")
+        favorites.user_id=request.json.get("user_id")
+        db.session.add(favorites)
+        db.session.commit()
+    
+
+    return jsonify(favorites.serialize()),200
 
 
 #@app.route("/favorites", methods=["POST", "GET"])
