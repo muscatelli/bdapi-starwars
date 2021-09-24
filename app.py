@@ -121,7 +121,17 @@ def favorites():
         db.session.commit()
     
 
-    return jsonify(favorites.serialize()),200
+@app.route("/favorites/<int:id>",methods=["POST","GET"])
+def favorite_list(id):
+    if request.method == "GET":
+        if id is not None:
+            favorites = Favorite.query.get(id)
+            return jsonify(favorites.serialize())
+        else:
+            return jsonify('Missing id for route'),404   
+            
+if __name__ == "__main__":
+    app.run(host='localhost', port=8080)
 
 
 #@app.route("/favorites", methods=["POST", "GET"])
